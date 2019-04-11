@@ -357,7 +357,156 @@
           }
         }
       },
+      "Point2D": {
+        "type": "object",
+        "required": [
+          "x",
+          "y"
+        ],
+        "properties": {
+          "x": {
+            "description": "X-coordinate as integer number of pixels measured from the left to the right.",
+            "type": "integer",
+            "format": "int32"
+          },
+          "y": {
+            "description": "Y-coordinate as integer number of pixels measured from the top to the bottom.",
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "Point3D": {
+        "type": "object",
+        "required": [
+          "x",
+          "y",
+          "z"
+        ],
+        "properties": {
+          "x": {
+            "description": "X-coordinate as integer number of pixels measured from the left to the right.",
+            "type": "integer",
+            "format": "int32"
+          },
+          "y": {
+            "description": "Y-coordinate as integer number of pixels measured from the top to the bottom.",
+            "type": "integer",
+            "format": "int32"
+          },
+          "z": {
+            "description": "Z-coordinate as integer number of pixels measured from the top to the bottom.",
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "Shape": {
+        "type": "object",
+        "discriminator": {
+          "propertyName": "shapeType",
+          "mapping": {
+            "2d-rectangle": "#/components/schemas/Shape2DReactangle",
+            "2d-polygon": "#/components/schemas/Shape2DPolygon",
+            "2d-timebound-polygon": "#/components/schemas/Shape2DTimeboundPolygon"
 
+          }
+        },
+        "required": [
+          "shapeId"
+        ],
+        "properties": {
+          "shapeId": {
+            "type": "string",
+            "description": "[TBD] Alpha-numeric, unique id of dataset",
+            "example": "EWFUWEGBUWRG342497EDFDDFBC81751818B7FD1300124455B07E91CB289F87791D78064ECC93754F19B13D419489F162A150A22DD814CKAF0E"
+          }
+        }
+      },
+      "Shape2DReactangle": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Shape"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "top": {
+                "type": "number",
+                "format": "int32",
+                "description": "Top coordinate of the tag, relative to media raster",
+                "example": 145
+              },
+              "left": {
+                "type": "number",
+                "format": "int32",
+                "description": "Left coordinate of the tag, relative to media raster",
+                "example": 182
+              },
+              "right": {
+                "type": "number",
+                "format": "int32",
+                "description": "Right coordinate of the tag, relative to media raster",
+                "example": 295
+              },
+              "bottom": {
+                "type": "number",
+                "format": "int32",
+                "description": "Bottom coordinate of the tag, relative to media raster",
+                "example": 244
+              }
+            }
+          }
+        ]
+      },
+      "Shape2DPolygon": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Shape"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "points": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Point2D",
+                  "type": "Point2D"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "Shape2DTimeboundPolygon": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Shape"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "startFrameCounter": {
+                "type": "number",
+                "format": "int32",
+                "description": "Frame where the described tag begins"
+              },
+              "endFrameCounter": {
+                "type": "number",
+                "format": "int32",
+                "description": "Frame where the described tag begins"
+              },
+              "points": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Point2D",
+                  "type": "Point2D"
+                }
+              }
+            }
+          }
+        ]
+      }
 
     }
   },
