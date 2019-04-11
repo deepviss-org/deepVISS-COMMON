@@ -1,0 +1,368 @@
+{
+  "openapi":"3.0.0",
+  
+  "info":{
+    "description":"DeepVISS (Deep Vision Interoperability Specification Standard) allows several computer vision solutions to produce, consume and exchange events in the same format.",
+    "version":"1.0.0",
+    "title":"DeepVISS Common",
+    "termsOfService":"https://deepviss.org",
+    "contact":{
+      "email":"office@deepviss.org"
+    },
+    "license":{
+      "name":"Apache 2.0",
+      "url":"https://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags":[
+    {
+      "name":"frame",
+      "description":"Information about post-processed frames",
+      "externalDocs":{
+        "description":"Streaming API",
+        "url":"https://deepviss.org"
+      }
+    },
+    {
+      "name":"analysis",
+      "description":"End-points for image or image array analysis",
+      "externalDocs":{
+        "description":"Find out more",
+        "url":"https://deepviss.org"
+      }
+    }
+  ],
+  "paths":{
+    "/stream/Frames":{
+      "get":{
+        "tags":[
+          "frame"
+        ],
+        "summary":"Retrieve last frames",
+        "description":"Multiple status values can be provided with comma separated strings",
+        "operationId":"GetLastFrames",
+        "parameters":
+        [
+          {
+            "in": "query",
+            "name": "streamId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The identifier of the stream"
+          }
+        ],
+        "responses":{
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Frame"
+                  }
+                }
+              }
+            }
+          },
+          "400":{
+            "description":"Invalid status value"
+          }
+        }
+      }
+    },
+    "/analysis/ProcessingRequest":{
+      "post":{
+        "tags":[
+          "analysis"
+        ],
+        "summary":"Analyze a specific frame",
+        "description":"",
+        "operationId":"ImageAnalysis",
+        "parameters":
+        [
+          {
+            "in": "query",
+            "name": "streamId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The identifier of the stream"
+          }
+        ],
+        "requestBody": {
+          "description": "Deliver the image to be analyzed *Markdown*",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProcessingRequest"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/ProcessingRequest"
+              }
+            }
+          }
+        },
+        "responses":{
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Frame"
+                  }
+                }
+              }
+            }
+          },
+          "400":{
+            "description":"Invalid status value"
+          }
+        }
+      }
+    },
+    "/analysis/ImagesArray":{
+      "post":{
+        "tags":[
+          "analysis"
+        ],
+        "summary":"Analyze an array of images",
+        "description":"",
+        "operationId":"ImageArrayAnalysis",
+        "parameters":
+        [
+          {
+            "in": "query",
+            "name": "streamId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The identifier of the stream"
+          }
+        ],
+        "requestBody": {
+          "description": "Deliver the image to be analyzed *Markdown*",
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "filename": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses":{
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Frame"
+                  }
+                }
+              }
+            }
+          },
+          "400":{
+            "description":"Invalid status value"
+          }
+        }
+      }
+    },
+    "/analysis/Image":{
+      "post":{
+        "tags":[
+          "analysis"
+        ],
+        "summary":"Analyze a single image",
+        "description":"",
+        "operationId":"ImageAnalysis",
+        "parameters":
+        [
+          {
+            "in": "query",
+            "name": "streamId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The identifier of the stream"
+          }
+        ],
+        "requestBody": {
+          "description": "Deliver the image to be analyzed *Markdown*",
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "filename": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses":{
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Frame"
+                  }
+                }
+              }
+            }
+          },
+          "400":{
+            "description":"Invalid status value"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Image": {
+        "type": "object",
+        "properties": {
+          "imageURL": {
+            "description": "The URL where the image is stored.",
+            "type": "string"
+          },
+          "imageBase64": {
+            "type": "string",
+            "format": "byte",
+            "description": "Base64 encoded string of the image."
+          },
+          "imageContentType": {
+            "type": "string",
+            "description": "Image MIME-type, such as image/png or image/jpeg"
+          }
+        }
+      },
+      "BoundingRectangle": {
+        "type": "object",
+        "required": [
+          "top",
+          "left",
+          "width",
+          "height"
+        ],
+        "properties": {
+          "top": {
+            "description": "Top-most position, in pixels, of of the bounding rectangle",
+            "type": "integer",
+            "format": "int32",
+            "example": 32
+          },
+          "left": {
+            "description": "Left-most position, in pixels, of of the bounding rectangle",
+            "type": "integer",
+            "format": "int32",
+            "example": 57
+          },
+          "width": {
+            "description": "Width, in pixels, of the bounding rectangle",
+            "type": "integer",
+            "format": "int32",
+            "example": 237
+          },
+          "height": {
+            "description": "Height, in pixels, of the bounding rectangle",
+            "type": "integer",
+            "format": "int32",
+            "example": 352
+          }
+        }
+      },
+      "Point2D": {
+        "type": "object",
+        "required": [
+          "x",
+          "y"
+        ],
+        "properties": {
+          "x": {
+            "description": "X-coordinate as integer number of pixels measured from the left to the right.",
+            "type": "integer",
+            "format": "int32"
+          },
+          "y": {
+            "description": "Y-coordinate as integer number of pixels measured from the top to the bottom.",
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "GeoPosition": {
+        "type": "object",
+        "required": [
+          "latitude",
+          "longitude"
+        ],
+        "properties": {
+          "latitude": {
+            "description": "The latitude at which the video source is installed.",
+            "type": "number",
+            "format": "double"
+          },
+          "longitude": {
+            "description": "The longitude at which the video source is installed.",
+            "type": "number",
+            "format": "double"
+          },
+          "altitude": {
+            "description": "The altitude at which the video source is installed.",
+            "type": "number",
+            "format": "double"
+          },
+          "elevation": {
+            "description": "The elevation from the ground at which the video source is installed, measured in meters.",
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "KeypointsSegment": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Point2D",
+            "type": "Point2D"
+          }
+        }
+      },
+
+
+    }
+  },
+  "externalDocs":{
+    "description":"Find out more about DeepVISS",
+    "url":"https://deepviss.org"
+  }
+}
