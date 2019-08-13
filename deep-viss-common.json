@@ -299,25 +299,6 @@
           }
         }
       },
-      "Point2D": {
-        "type": "object",
-        "required": [
-          "x",
-          "y"
-        ],
-        "properties": {
-          "x": {
-            "description": "X-coordinate as integer number of pixels measured from the left to the right.",
-            "type": "integer",
-            "format": "int32"
-          },
-          "y": {
-            "description": "Y-coordinate as integer number of pixels measured from the top to the bottom.",
-            "type": "integer",
-            "format": "int32"
-          }
-        }
-      },
       "GeoPosition": {
         "type": "object",
         "required": [
@@ -406,9 +387,9 @@
         "discriminator": {
           "propertyName": "shapeType",
           "mapping": {
-            "2d-rectangle": "#/components/schemas/Shape2DReactangle",
-            "2d-polygon": "#/components/schemas/Shape2DPolygon",
-            "2d-timebound-polygon": "#/components/schemas/Shape2DTimeboundPolygon"
+            "2d-rectangle": "#/definitions/Shape2DReactangle",
+            "2d-polygon": "#/definitions/Shape2DPolygon",
+            "2d-timebound-polygon": "#/definitions/Shape2DTimeboundPolygon"
 
           }
         },
@@ -470,7 +451,7 @@
               "points": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/definitions/Point2D",
+                  "$ref": "#/components/schemas/Point2D",
                   "type": "Point2D"
                 }
               }
@@ -499,7 +480,7 @@
               "points": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/definitions/Point2D",
+                  "$ref": "#/components/schemas/Point2D",
                   "type": "Point2D"
                 }
               }
