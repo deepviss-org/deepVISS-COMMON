@@ -1,6 +1,6 @@
 {
   "openapi":"3.0.0",
-
+  
   "info":{
     "description":"DeepVISS (Deep Vision Interoperability Specification Standard) allows several computer vision solutions to produce, consume and exchange events in the same format.",
     "version":"1.2.0",
@@ -255,7 +255,6 @@
           },
           "imageBase64": {
             "type": "string",
-            "format": "byte",
             "description": "Base64 encoded string of the image."
           },
           "imageContentType": {
