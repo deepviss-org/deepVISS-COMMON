@@ -172,13 +172,7 @@
       "Shape": {
         "type": "object",
         "discriminator": {
-          "propertyName": "shapeType",
-          "mapping": {
-            "2d-rectangle": "#/definitions/Shape2DReactangle",
-            "2d-polygon": "#/definitions/Shape2DPolygon",
-            "2d-timebound-polygon": "#/definitions/Shape2DTimeboundPolygon"
-
-          }
+          "propertyName": "shapeType"
         },
         "required": [
           "shapeId",
@@ -189,6 +183,11 @@
             "type": "string",
             "description": "[TBD] Alpha-numeric, unique id of dataset",
             "example": "EWFUWEGBUWRG342497EDFDDFBC81751818B7FD1300124455B07E91CB289F87791D78064ECC93754F19B13D419489F162A150A22DD814CKAF0E"
+          },
+          "shapeType": {
+            "type": "string",
+            "description": "descriminator",
+            "example": "Shape2DReactangle"
           }
         }
       },
