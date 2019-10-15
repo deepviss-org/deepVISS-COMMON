@@ -191,7 +191,7 @@
           }
         }
       },
-      "Shape2DReactangle": {
+      "Shape2DRectangle": {
         "allOf": [
           {
             "$ref": "#/components/schemas/Shape"
