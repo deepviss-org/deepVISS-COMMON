@@ -1,6 +1,6 @@
 {
   "openapi":"3.0.0",
-  
+
   "info":{
     "description":"DeepVISS (Deep Vision Interoperability Specification Standard) allows several computer vision solutions to produce, consume and exchange events in the same format.",
     "version":"1.2.0",
@@ -200,25 +200,25 @@
             "type": "object",
             "properties": {
               "top": {
-                "type": "number",
+                "type": "integer",
                 "format": "int32",
                 "description": "Top coordinate of the tag, relative to media raster",
                 "example": 145
               },
               "left": {
-                "type": "number",
+                "type": "integer",
                 "format": "int32",
                 "description": "Left coordinate of the tag, relative to media raster",
                 "example": 182
               },
               "right": {
-                "type": "number",
+                "type": "integer",
                 "format": "int32",
                 "description": "Right coordinate of the tag, relative to media raster",
                 "example": 295
               },
               "bottom": {
-                "type": "number",
+                "type": "integer",
                 "format": "int32",
                 "description": "Bottom coordinate of the tag, relative to media raster",
                 "example": 244
@@ -255,12 +255,12 @@
             "type": "object",
             "properties": {
               "startFrameCounter": {
-                "type": "number",
+                "type": "integer",
                 "format": "int32",
                 "description": "Frame where the described tag begins"
               },
               "endFrameCounter": {
-                "type": "number",
+                "type": "integer",
                 "format": "int32",
                 "description": "Frame where the described tag begins"
               },
