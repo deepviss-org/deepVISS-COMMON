@@ -274,12 +274,59 @@
             }
           }
         ]
-      }
+      },
+      "TextBlock": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Shape"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "boundingBox": {
+                "type": "Shape2DRectangle",
+                "$ref": "#/components/schemas/Shape2DRectangle"
+              },
+              "encoding": {
+                "type": "string",
+                "description": "Character encoding",
+                "example": "UTF-8"
+              },
+              "alphabet": {
+                "type": "string",
+                "description": "text alphabet",
+                "example": "english"
+              },
+              "endianness": {
+                "type": "string",
+                "description": "endianness",
+                "example": "Little-endian ??"
+              },
+              "direction": {
+                "type": "string",
+                "description": "reading direction",
+                "example": "left-to-right",
+                "enum": [
+                  "left-to-right",
+                  "right-to-left",
+                  "top-to-bottom",
+                  "bottom-to-top"
+                ]
 
+              },
+              "collation": {
+                "type": "string",
+                "description": "collation",
+                "example": "utf8_romanian_ci "
+              }
+            }
+          }
+        ]
+      }
     }
   },
   "externalDocs":{
-    "description": "Deep vision interoperability specification standard (DeepVISS) reduces integration time, complexity and defects by using a standardized, language-agnostic, cross-platform schema",
+    "description":"Find out more about DeepVISS",
     "url":"https://deepviss.org"
   }
 }
