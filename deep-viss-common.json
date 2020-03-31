@@ -275,7 +275,7 @@
           }
         ]
       },
-      "TextBlock": {
+      "Shape2DTextBlock": {
         "allOf": [
           {
             "$ref": "#/components/schemas/Shape"
