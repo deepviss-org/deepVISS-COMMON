@@ -275,32 +275,34 @@
           }
         ]
       },
-      "Shape2DTextBlock": {
+      "Shape2DRectangularBlock": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/Shape"
+            "$ref": "#/components/schemas/Shape2DRectangle"
           },
           {
             "type": "object",
             "properties": {
-              "boundingBox": {
-                "type": "Shape2DRectangle",
-                "$ref": "#/components/schemas/Shape2DRectangle"
-              },
               "encoding": {
                 "type": "string",
-                "description": "Character encoding",
-                "example": "UTF-8"
+                "description": "Character encoding type",
+                "example": "UTF-8",
+                "enum": [
+                  "ISO-646-ASCII",
+                  "UTF-8"
+                ]
               },
-              "alphabet": {
+              "charset": {
                 "type": "string",
-                "description": "text alphabet",
-                "example": "english"
-              },
-              "endianness": {
-                "type": "string",
-                "description": "endianness",
-                "example": "Little-endian ??"
+                "description": "The set of characters allowed , alphabet",
+                "example": "latin1",
+                "enum": [
+                  "latin1",
+                  "latin2",
+                  "cp1251",
+                  "greek",
+                  "hebrew"
+                ]
               },
               "direction": {
                 "type": "string",
@@ -312,12 +314,18 @@
                   "top-to-bottom",
                   "bottom-to-top"
                 ]
-
               },
-              "collation": {
+              "collation-language": {
                 "type": "string",
                 "description": "collation",
-                "example": "utf8_romanian_ci "
+                "example": "utf8_romanian_ci",
+                "enum": [
+                  "utf8_romanian_ci",
+                  "latin2_general_ci",
+                  "cp1250_general_ci",
+                  "greek_general_ci",
+                  "hebrew_general_ci"
+                ]
               }
             }
           }
