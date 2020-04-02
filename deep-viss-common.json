@@ -212,7 +212,7 @@
           "shapeId": {
             "type": "string",
             "description": "[TBD] Alpha-numeric, unique id of dataset",
-            "example": "EWFUWEGBUWRG342497EDFDDFBC81751818B7FD1300124455B07E91CB289F87791D78064ECC93754F19B13D419489F162A150A22DD814CKAF0E"
+            "example": "791D78064ECC93754F19B13D419489F162A150A22DD814CKAF0E"
           },
           "shapeType": {
             "type": "string",
