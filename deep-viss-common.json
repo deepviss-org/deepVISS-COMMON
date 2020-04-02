@@ -1,34 +1,33 @@
 {
-  "openapi":"3.0.0",
-
-  "info":{
-    "description":"DeepVISS (Deep Vision Interoperability Specification Standard) allows several computer vision solutions to produce, consume and exchange events in the same format.",
-    "version":"1.2.0",
-    "title":"DeepVISS Common",
-    "termsOfService":"https://deepviss.org",
-    "contact":{
-      "email":"office@deepviss.org"
+  "openapi": "3.0.0",
+  "info": {
+    "description": "DeepVISS (Deep Vision Interoperability Specification Standard) allows several computer vision solutions to produce, consume and exchange events in the same format.",
+    "version": "1.2.0",
+    "title": "DeepVISS Common",
+    "termsOfService": "https://deepviss.org",
+    "contact": {
+      "email": "office@deepviss.org"
     },
-    "license":{
-      "name":"Apache 2.0",
-      "url":"https://www.apache.org/licenses/LICENSE-2.0.html"
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
-  "tags":[
+  "tags": [
     {
-      "name":"frame",
-      "description":"Information about post-processed frames",
-      "externalDocs":{
-        "description":"Streaming API",
-        "url":"https://deepviss.org"
+      "name": "frame",
+      "description": "Information about post-processed frames",
+      "externalDocs": {
+        "description": "Streaming API",
+        "url": "https://deepviss.org"
       }
     },
     {
-      "name":"analysis",
-      "description":"End-points for image or image array analysis",
-      "externalDocs":{
-        "description":"Find out more",
-        "url":"https://deepviss.org"
+      "name": "analysis",
+      "description": "End-points for image or image array analysis",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "https://deepviss.org"
       }
     }
   ],
@@ -358,7 +357,6 @@
             "format": "int16",
             "description": "Size of font",
             "example": 12
-
           },
           "font-color": {
             "type": "string",
@@ -446,27 +444,22 @@
           "value": {
             "type": "string"
           },
-          "subjectiveOpinion":
-          {
+          "subjectiveOpinion": {
             "$ref": "#/components/schemas/InternalSubjectiveOpinion",
             "type": "InternalSubjectiveOpinion"
           }
         }
       },
-
-
       "InternalSubjectiveOpinion": {
         "description": "Three independent counters corresponding to belief, disbelief and uncertainty. mediated by a common denominator and multiplied by a base rate (probability in the absence of this information).",
         "type": "object",
         "properties": {
-          "opinionEmitterId":
-          {
+          "opinionEmitterId": {
             "type": "string",
             "description": "Functional source, if any, for this opinion, such a specific condition ",
             "example": "ocr"
           },
-          "opinionReasonId":
-          {
+          "opinionReasonId": {
             "type": "string",
             "description": "Reason evoked, invoked or inferred by source for this opinion.",
             "example": "unreadable"
@@ -507,14 +500,12 @@
         "description": "The reduced or collapsed version of InternalSubjectiveOpinion, with all beliefs and disbeliefs reduced per reason,emitter pair. ",
         "type": "object",
         "properties": {
-          "opinionEmitterId":
-          {
+          "opinionEmitterId": {
             "type": "string",
             "description": "Functional source, if any, for this opinion, such a specific condition or internal state encoutered. May be empty.",
             "example": "ocr"
           },
-          "opinionReasonId":
-          {
+          "opinionReasonId": {
             "type": "string",
             "description": "Reason evoked, invoked or inferred by source for this opinion. May be empty.",
             "example": "unreadable"
@@ -547,8 +538,8 @@
       }
     }
   },
-  "externalDocs":{
-    "description":"Find out more about DeepVISS",
-    "url":"https://deepviss.org"
+  "externalDocs": {
+    "description": "Find out more about DeepVISS",
+    "url": "https://deepviss.org"
   }
 }
