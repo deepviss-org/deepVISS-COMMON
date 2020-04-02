@@ -316,12 +316,56 @@
               "transliteration": {
                 "type": "Transliteration",
                 "$ref": "#/components/schemas/Transliteration",
-
                 "description": "Frame where the described tag begins"
+              },
+              "style": {
+                "type": "TextStyle",
+                "$ref": "#/components/schemas/TextStyle",
+                "description": "Recognized style of the writing, including font family, font type, size, color"
               }
             }
           }
         ]
+      },
+      "Style": {
+        "type": "object",
+        "description": "Recognized style of the writing, including font family, font type, size, color",
+        "properties": {
+          "font-style": {
+            "type": "string",
+            "description": "Character encoding type",
+            "example": "serif",
+            "enum": [
+              "serif",
+              "sans-serif",
+              "handwritten",
+              "collage"
+            ]
+          },
+          "font-variant": {
+            "type": "string",
+            "description": "Character encoding type",
+            "example": "serif",
+            "enum": [
+              "all-caps",
+              "no-caps",
+              "handwritten",
+              "collage"
+            ]
+          },
+          "font-size": {
+            "type": "integer",
+            "format": "int16",
+            "description": "Size of font",
+            "example": 12
+
+          },
+          "font-color": {
+            "type": "string",
+            "description": "Color in hex format ",
+            "example": "#030F01"
+          }
+        }
       },
       "Transliteration": {
         "type": "object",
