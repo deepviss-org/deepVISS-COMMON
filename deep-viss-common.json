@@ -318,8 +318,8 @@
                 "description": "Frame where the described tag begins"
               },
               "style": {
-                "type": "TextStyle",
-                "$ref": "#/components/schemas/TextStyle",
+                "type": "Style",
+                "$ref": "#/components/schemas/Style",
                 "description": "Recognized style of the writing, including font family, font type, size, color"
               }
             }
