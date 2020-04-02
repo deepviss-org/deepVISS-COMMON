@@ -32,6 +32,36 @@
       }
     }
   ],
+  "paths": {
+    "/status": {
+      "get": {
+        "tags": [
+          "frame"
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SubjectiveOpinion"
+                  }
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "operationId": "GetStatus",
+        "summary": "Sample endpoint to avoid validation warning.",
+        "description": "No functionality."
+      }
+    }
+  },
   "components": {
     "schemas": {
       "Image": {
@@ -275,7 +305,7 @@
           }
         ]
       },
-      "Shape2DRectangularBlock": {
+      "Shape2DRectangularTextBlock": {
         "allOf": [
           {
             "$ref": "#/components/schemas/Shape2DRectangle"
@@ -283,53 +313,193 @@
           {
             "type": "object",
             "properties": {
-              "encoding": {
-                "type": "string",
-                "description": "Character encoding type",
-                "example": "UTF-8",
-                "enum": [
-                  "ISO-646-ASCII",
-                  "UTF-8"
-                ]
-              },
-              "charset": {
-                "type": "string",
-                "description": "The set of characters allowed , alphabet",
-                "example": "latin1",
-                "enum": [
-                  "latin1",
-                  "latin2",
-                  "cp1251",
-                  "greek",
-                  "hebrew"
-                ]
-              },
-              "direction": {
-                "type": "string",
-                "description": "reading direction",
-                "example": "left-to-right",
-                "enum": [
-                  "left-to-right",
-                  "right-to-left",
-                  "top-to-bottom",
-                  "bottom-to-top"
-                ]
-              },
-              "collation-language": {
-                "type": "string",
-                "description": "collation",
-                "example": "utf8_romanian_ci",
-                "enum": [
-                  "utf8_romanian_ci",
-                  "latin2_general_ci",
-                  "cp1250_general_ci",
-                  "greek_general_ci",
-                  "hebrew_general_ci"
-                ]
+              "transliteration": {
+                "type": "Transliteration",
+                "$ref": "#/components/schemas/Transliteration",
+
+                "description": "Frame where the described tag begins"
               }
             }
           }
         ]
+      },
+      "Transliteration": {
+        "type": "object",
+        "description": "Defines a segment of text associated to a Shape, together with many possibilities for each ",
+        "properties": {
+          "encoding": {
+            "type": "string",
+            "description": "Character encoding type",
+            "example": "UTF-8",
+            "enum": [
+              "ISO-646-ASCII",
+              "UTF-8"
+            ]
+          },
+          "charset": {
+            "type": "string",
+            "description": "The set of characters allowed , alphabet",
+            "example": "latin1",
+            "enum": [
+              "latin1",
+              "latin2",
+              "cp1251",
+              "greek",
+              "hebrew"
+            ]
+          },
+          "direction": {
+            "type": "string",
+            "description": "reading direction",
+            "example": "left-to-right",
+            "enum": [
+              "left-to-right",
+              "right-to-left",
+              "top-to-bottom",
+              "bottom-to-top"
+            ]
+          },
+          "collation-language": {
+            "type": "string",
+            "description": "collation use for comparing and sorting the characters, as per Unicode Sorting Algorithm",
+            "example": "utf8_romanian_ci",
+            "enum": [
+              "utf8_romanian_ci",
+              "latin2_general_ci",
+              "cp1250_general_ci",
+              "greek_general_ci",
+              "hebrew_general_ci"
+            ]
+          },
+          "characterSequence": {
+            "description": "The order of the characters, according to the direction of the transliteration",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ObservableCharacter",
+              "type": "ObservableCharacter"
+            }
+          }
+        }
+      },
+      "ObservableCharacter": {
+        "type": "object",
+        "description": "The object which described several possible values for a an observed character.",
+        "properties": {
+          "superposedCharacter": {
+            "description": "The segments (sub-keys) that compose the permanent identifier.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ObservedCharacter",
+              "type": "ObservedCharacter"
+            }
+          }
+        }
+      },
+      "ObservedCharacter": {
+        "type": "object",
+        "description": "The object which described several possible values for a an observed character.",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "subjectiveOpinion":
+          {
+            "$ref": "#/components/schemas/InternalSubjectiveOpinion",
+            "type": "InternalSubjectiveOpinion"
+          }
+        }
+      },
+
+
+      "InternalSubjectiveOpinion": {
+        "description": "Three independent counters corresponding to belief, disbelief and uncertainty. mediated by a common denominator and multiplied by a base rate (probability in the absence of this information).",
+        "type": "object",
+        "properties": {
+          "opinionEmitterId":
+          {
+            "type": "string",
+            "description": "Functional source, if any, for this opinion, such a specific condition ",
+            "example": "ocr"
+          },
+          "opinionReasonId":
+          {
+            "type": "string",
+            "description": "Reason evoked, invoked or inferred by source for this opinion.",
+            "example": "unreadable"
+          },
+          "attributedBeliefNumerator": {
+            "format": "int32",
+            "description": "Number, signed and additive, of fulfillment points out of total that are attributed to belief that the opinion is TRUE. belief mass (bx) numerator accumulator.",
+            "type": "integer",
+            "example": 5
+          },
+          "attributedDisbeliefNumerator": {
+            "format": "int32",
+            "description": "Number, signed and additive, of fulfillment points out of total that are attributed to belief that the opinion is FALSE. belief mass (dx) numerator accumulator",
+            "type": "integer",
+            "example": 2
+          },
+          "unattributedUncertaintyNumerator": {
+            "format": "int32",
+            "description": "Number, signed and additive, of fulfillment points out of total that are unattributed to either belief or disbelief and thus represent uncertainty. uncertainty mass (ux) numerator accumulator.",
+            "type": "integer",
+            "example": 1
+          },
+          "commonDenominator": {
+            "format": "int32",
+            "description": "The normalizing factor (the common denominator) of uncertainty, belief and disbelief.",
+            "type": "integer",
+            "example": 1
+          },
+          "baseRateNumerator": {
+            "format": "int32",
+            "description": "The probability of the opinion being true in the absence of the information generating it; this represents the default probability of a an element or character or letter appearing in a specific context",
+            "type": "integer",
+            "example": 1
+          }
+        }
+      },
+      "SubjectiveOpinion": {
+        "description": "The reduced or collapsed version of InternalSubjectiveOpinion, with all beliefs and disbeliefs reduced per reason,emitter pair. ",
+        "type": "object",
+        "properties": {
+          "opinionEmitterId":
+          {
+            "type": "string",
+            "description": "Functional source, if any, for this opinion, such a specific condition or internal state encoutered. May be empty.",
+            "example": "ocr"
+          },
+          "opinionReasonId":
+          {
+            "type": "string",
+            "description": "Reason evoked, invoked or inferred by source for this opinion. May be empty.",
+            "example": "unreadable"
+          },
+          "belief": {
+            "format": "double",
+            "description": "attributed to belief that the opinion is TRUE. belief mass (bx) normalized.",
+            "type": "number",
+            "example": 0.75
+          },
+          "disbelief": {
+            "format": "double",
+            "description": "attributed to belief that the opinion is FALSE. disbelief mass (dx)  normalized",
+            "type": "number",
+            "example": 0.2
+          },
+          "uncertainty": {
+            "format": "double",
+            "description": "unattributed to either belief or disbelief and thus represent uncertainty. uncertainty mass (ux) normalized.",
+            "type": "number",
+            "example": 0.1
+          },
+          "baseRateProbability": {
+            "format": "double",
+            "description": "The probability of the opinion being true in the absence of the information generating it.",
+            "type": "number",
+            "example": 0.001
+          }
+        }
       }
     }
   },
