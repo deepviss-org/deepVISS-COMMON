@@ -227,6 +227,9 @@
           },
           {
             "type": "object",
+            "discriminator": {
+              "propertyName": "shapeType"
+            },
             "properties": {
               "top": {
                 "type": "integer",
