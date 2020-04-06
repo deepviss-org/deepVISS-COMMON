@@ -203,10 +203,10 @@
         "discriminator": {
           "propertyName": "shapeType",
           "mapping": {
-            "Shape2DRectangle": "Shape2DRectangle",
-            "Shape2DPolygon": "Shape2DPolygon",
-            "Shape2DTimeboundPolygon": "Shape2DTimeboundPolygon",
-            "Shape2DRectangularTextBlock": "Shape2DRectangularTextBlock"
+            "Shape2DRectangle": "#/components/schemas/Shape2DRectangle",
+            "Shape2DPolygon": "#/components/schemas/Shape2DPolygon",
+            "Shape2DTimeboundPolygon": "#/components/schemas/Shape2DTimeboundPolygon",
+            "Shape2DRectangularTextBlock": "#/components/schemas/Shape2DRectangularTextBlock"
           }
         },
         "required": [
