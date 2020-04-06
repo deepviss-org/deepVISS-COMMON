@@ -201,7 +201,13 @@
       "Shape": {
         "type": "object",
         "discriminator": {
-          "propertyName": "shapeType"
+          "propertyName": "shapeType",
+          "mapping": {
+            "Shape2DRectangle": "Shape2DRectangle",
+            "Shape2DPolygon": "Shape2DPolygon",
+            "Shape2DTimeboundPolygon": "Shape2DTimeboundPolygon",
+            "Shape2DRectangularTextBlock": "Shape2DRectangularTextBlock"
+          }
         },
         "required": [
           "shapeId",
@@ -227,9 +233,6 @@
           },
           {
             "type": "object",
-            "discriminator": {
-              "propertyName": "shapeType"
-            },
             "properties": {
               "top": {
                 "type": "integer",
