@@ -423,13 +423,13 @@
             "description": "The order of the characters, according to the direction of the transliteration",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ObservableCharacter",
-              "type": "ObservableCharacter"
+              "$ref": "#/components/schemas/ObservableSymbol",
+              "type": "ObservableSymbol"
             }
           }
         }
       },
-      "ObservableCharacter": {
+      "ObservableSymbol": {
         "type": "object",
         "description": "The object which described several possible values for a an observed character.",
         "properties": {
@@ -437,13 +437,13 @@
             "description": "The segments (sub-keys) that compose the permanent identifier.",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ObservedCharacter",
-              "type": "ObservedCharacter"
+              "$ref": "#/components/schemas/LatentSymbol",
+              "type": "LatentSymbol"
             }
           }
         }
       },
-      "ObservedCharacter": {
+      "LatentSymbol": {
         "type": "object",
         "description": "The object which described several possible values for a an observed character.",
         "properties": {
