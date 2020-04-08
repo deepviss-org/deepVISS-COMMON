@@ -148,9 +148,32 @@
         "type": "object",
         "additionalProperties": {
           "type": "array",
+          "description" : "Collection of key-points, grouped in a map with keys representing names and values represented by a value of points.",
           "items": {
             "$ref": "#/definitions/Point2D",
             "type": "Point2D"
+          }
+        }
+      },
+      "Orientation": {
+        "type": "object",
+        "required": [
+        ],
+        "properties": {
+          "yaw": {
+            "description": "The yaw of the detected object or event.",
+            "type": "number",
+            "format": "double"
+          },
+          "pitch": {
+            "description": "The pitch of the detected object or event.",
+            "type": "number",
+            "format": "double"
+          },
+          "roll": {
+            "description": "The roll of the detected object or event.",
+            "type": "number",
+            "format": "double"
           }
         }
       },
