@@ -146,12 +146,14 @@
       },
       "KeypointsSegment": {
         "type": "object",
-        "additionalProperties": {
-          "type": "array",
-          "description" : "Collection of key-points, grouped in a map with keys representing names and values represented by a value of points.",
-          "items": {
-            "$ref": "#/definitions/Point2D",
-            "type": "Point2D"
+        "properties": {
+          "keypoints" : {
+            "type": "array",
+            "description" : "Collection of key-points, grouped in a map with keys representing names and values represented by a value of points.",
+            "items": {
+              "$ref": "#/definitions/Point2D",
+              "type": "Point2D"
+            }
           }
         }
       },
