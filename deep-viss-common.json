@@ -151,7 +151,7 @@
             "type": "array",
             "description" : "Collection of key-points, grouped in a map with keys representing names and values represented by a value of points.",
             "items": {
-              "$ref": "#/definitions/Point2D",
+              "$ref": "#/components/schemas/Point2D",
               "type": "Point2D"
             }
           }
