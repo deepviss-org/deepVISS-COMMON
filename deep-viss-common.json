@@ -566,7 +566,7 @@
             "example": 0.001
           }
         }
-      }
+      },
       "PermanentIdentifier": {
         "type": "object",
         "description": "The object with describes the composite identifier",
