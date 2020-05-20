@@ -400,6 +400,12 @@
         "type": "object",
         "description": "Defines a segment of text associated to a Shape, together with many possibilities for each ",
         "properties": {
+          "languageCode": {
+            "type": "string",
+            "description": "The BCP-47 language code",
+            "example": "en"
+            ]
+          },
           "encoding": {
             "type": "string",
             "description": "Character encoding type",
