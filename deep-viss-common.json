@@ -404,7 +404,6 @@
             "type": "string",
             "description": "The BCP-47 language code",
             "example": "en"
-            ]
           },
           "encoding": {
             "type": "string",
