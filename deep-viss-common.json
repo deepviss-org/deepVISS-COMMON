@@ -338,7 +338,7 @@
       "Shape2DRectangularTextBlock": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/Shape2DRectangle"
+            "$ref": "#/components/schemas/Shape2DPolygon"
           },
           {
             "type": "object",
