@@ -409,6 +409,11 @@
             "description": "The BCP-47 language code",
             "example": "en"
           },
+          "compressedCharacterSequence": {
+            "type": "string",
+            "description": "compressed version of character sequence",
+            "example": "word"
+          },
           "encoding": {
             "type": "string",
             "description": "Character encoding type",
