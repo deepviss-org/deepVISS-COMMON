@@ -338,11 +338,15 @@
       "Shape2DRectangularTextBlock": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/Shape2DPolygon"
+            "$ref": "#/components/schemas/Shape"
           },
           {
             "type": "object",
             "properties": {
+              "shape": {
+                "type": "Shape",
+                "$ref": "#/components/schemas/Shape"
+              },
               "transliteration": {
                 "type": "Transliteration",
                 "$ref": "#/components/schemas/Transliteration",
