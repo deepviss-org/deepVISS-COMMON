@@ -231,7 +231,8 @@
             "Shape2DRectangle": "#/components/schemas/Shape2DRectangle",
             "Shape2DPolygon": "#/components/schemas/Shape2DPolygon",
             "Shape2DTimeboundPolygon": "#/components/schemas/Shape2DTimeboundPolygon",
-            "Shape2DRectangularTextBlock": "#/components/schemas/Shape2DRectangularTextBlock"
+            "Shape2DRectangleTextBlock": "#/components/schemas/Shape2DRectangleTextBlock",
+            "Shape2DPolygonTextBlock": "#/components/schemas/Shape2DPolygonTextBlock"
           }
         },
         "required": [
