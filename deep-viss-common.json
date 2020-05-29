@@ -335,18 +335,36 @@
           }
         ]
       },
-      "Shape2DRectangularTextBlock": {
+      "Shape2DRectangleTextBlock": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/Shape"
+            "$ref": "#/components/schemas/Shape2DRectangle"
           },
           {
             "type": "object",
             "properties": {
-              "shape": {
-                "type": "Shape",
-                "$ref": "#/components/schemas/Shape"
+              "transliteration": {
+                "type": "Transliteration",
+                "$ref": "#/components/schemas/Transliteration",
+                "description": "Frame where the described tag begins"
               },
+              "style": {
+                "type": "Style",
+                "$ref": "#/components/schemas/Style",
+                "description": "Recognized style of the writing, including font family, font type, size, color"
+              }
+            }
+          }
+        ]
+      },
+      "Shape2DPolygonTextBlock": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Shape2DPolygon"
+          },
+          {
+            "type": "object",
+            "properties": {
               "transliteration": {
                 "type": "Transliteration",
                 "$ref": "#/components/schemas/Transliteration",
