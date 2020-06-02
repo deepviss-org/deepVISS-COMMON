@@ -380,7 +380,7 @@
           }
         ]
       },
-      "TagTypeEnum": {
+      "ShapeTypeEnum": {
         "type": "string",
         "enum": [
           "2D_rectangle",
