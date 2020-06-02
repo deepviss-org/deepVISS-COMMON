@@ -228,11 +228,11 @@
         "discriminator": {
           "propertyName": "shapeType",
           "mapping": {
-            "Shape2DRectangle": "#/components/schemas/Shape2DRectangle",
-            "Shape2DPolygon": "#/components/schemas/Shape2DPolygon",
-            "Shape2DTimeboundPolygon": "#/components/schemas/Shape2DTimeboundPolygon",
-            "Shape2DRectangleTextBlock": "#/components/schemas/Shape2DRectangleTextBlock",
-            "Shape2DPolygonTextBlock": "#/components/schemas/Shape2DPolygonTextBlock"
+            "2D_rectangle": "#/components/schemas/Shape2DRectangle",
+            "2D_polygon": "#/components/schemas/Shape2DPolygon",
+            "2D_timebound_olygon": "#/components/schemas/Shape2DTimeboundPolygon",
+            "2D_rectangle_text_block": "#/components/schemas/Shape2DRectangleTextBlock",
+            "2D_polygon_text_block": "#/components/schemas/Shape2DPolygonTextBlock"
           }
         },
         "required": [
@@ -378,6 +378,16 @@
               }
             }
           }
+        ]
+      },
+      "TagTypeEnum": {
+        "type": "string",
+        "enum": [
+          "2D_rectangle",
+          "2D_polygon",
+          "2D_timebound_olygon",
+          "2D_rectangle_text_block",
+          "2D_polygon_text_block"
         ]
       },
       "Style": {
