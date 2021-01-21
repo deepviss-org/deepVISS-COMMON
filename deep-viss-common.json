@@ -713,6 +713,34 @@
             ]
           }
         }
+      },
+      "Attribute": {
+        "type": "object",
+        "required": [
+          "name",
+          "value"
+        ],
+        "properties": {
+          "name": {
+            "description": "The name of the attribute",
+            "type": "string",
+            "example": "age-group"
+          },
+          "value": {
+            "description": "The value of the attribute",
+            "type": "string",
+            "example": "32-45"
+          },
+          "subjectiveOpinion": {
+            "$ref": "#/components/schemas/SubjectiveOpinion",
+            "type": "SubjectiveOpinion"
+          },
+          "type": {
+            "description": "The type of the attribute, to be used in higher order processing and logic.",
+            "$ref": "#/components/schemas/PermanentIdentifier",
+            "type": "PermanentIdentifier"
+          }
+        }
       }
     }
   },
