@@ -228,6 +228,7 @@
         "discriminator": {
           "propertyName": "shapeType",
           "mapping": {
+            "2D_point": "#/components/schemas/Shape2DPoint",
             "2D_rectangle": "#/components/schemas/Shape2DRectangle",
             "2D_polygon": "#/components/schemas/Shape2DPolygon",
             "2D_timebound_polygon": "#/components/schemas/Shape2DTimeboundPolygon",
@@ -251,6 +252,16 @@
             "example": "Shape2DReactangle"
           }
         }
+      },
+      "Shape2DPoint": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Shape"
+          },
+          {
+            "$ref": "#/components/schemas/Point2D"
+          }
+        ]
       },
       "Shape2DRectangle": {
         "allOf": [
@@ -383,6 +394,7 @@
       "ShapeTypeEnum": {
         "type": "string",
         "enum": [
+          "2D_point",
           "2D_rectangle",
           "2D_polygon",
           "2D_rectangle_text_block",
