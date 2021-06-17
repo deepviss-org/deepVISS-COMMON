@@ -147,9 +147,9 @@
       "KeypointsSegment": {
         "type": "object",
         "properties": {
-          "keypoints" : {
+          "keypoints": {
             "type": "array",
-            "description" : "Collection of key-points, grouped in a map with keys representing names and values represented by a value of points.",
+            "description": "Collection of key-points, grouped in a map with keys representing names and values represented by a value of points.",
             "items": {
               "$ref": "#/components/schemas/Point2D",
               "type": "Point2D"
@@ -159,8 +159,7 @@
       },
       "Orientation": {
         "type": "object",
-        "required": [
-        ],
+        "required": [],
         "properties": {
           "yaw": {
             "description": "The yaw of the detected object or event.",
@@ -233,7 +232,8 @@
             "2D_polygon": "#/components/schemas/Shape2DPolygon",
             "2D_timebound_polygon": "#/components/schemas/Shape2DTimeboundPolygon",
             "2D_rectangle_text_block": "#/components/schemas/Shape2DRectangleTextBlock",
-            "2D_polygon_text_block": "#/components/schemas/Shape2DPolygonTextBlock"
+            "2D_polygon_text_block": "#/components/schemas/Shape2DPolygonTextBlock",
+            "2D_plain_text": "#/components/schemas/Shape2DPlainText"
           }
         },
         "required": [
@@ -248,8 +248,8 @@
           },
           "shapeType": {
             "type": "string",
-            "description": "descriminator",
-            "example": "Shape2DReactangle"
+            "description": "discriminator",
+            "example": "Shape2DRectangle"
           }
         }
       },
@@ -391,6 +391,38 @@
           }
         ]
       },
+      "Shape2DPlainText": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Shape"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "startIndex": {
+                "type": "integer",
+                "format": "int32",
+                "description": "The index where the tag text starts in initial text"
+              },
+              "length": {
+                "type": "integer",
+                "format": "int32",
+                "description": "The chars count of the tag"
+              },
+              "transliteration": {
+                "type": "Transliteration",
+                "$ref": "#/components/schemas/Transliteration",
+                "description": "Frame where the described tag begins"
+              },
+              "style": {
+                "type": "Style",
+                "$ref": "#/components/schemas/Style",
+                "description": "Recognized style of the writing, including font family, font type, size, color"
+              }
+            }
+          }
+        ]
+      },
       "ShapeTypeEnum": {
         "type": "string",
         "enum": [
@@ -399,7 +431,8 @@
           "2D_polygon",
           "2D_rectangle_text_block",
           "2D_polygon_text_block",
-          "2D_timebound_polygon"
+          "2D_timebound_polygon",
+          "2D_plain_text"
         ]
       },
       "Style": {
