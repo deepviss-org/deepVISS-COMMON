@@ -233,7 +233,8 @@
             "2D_timebound_polygon": "#/components/schemas/Shape2DTimeboundPolygon",
             "2D_rectangle_text_block": "#/components/schemas/Shape2DRectangleTextBlock",
             "2D_polygon_text_block": "#/components/schemas/Shape2DPolygonTextBlock",
-            "2D_plain_text": "#/components/schemas/Shape2DPlainText"
+            "2D_plain_text": "#/components/schemas/Shape2DPlainText",
+            "2D_audio": "#/components/schemas/Shape2DAudio"
           }
         },
         "required": [
@@ -423,6 +424,43 @@
           }
         ]
       },
+      "Shape2DAudio": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Shape"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "startTime": {
+                "type": "number",
+                "format": "float",
+                "description": "The index where the tag text starts in audio file"
+              },
+              "endTime": {
+                "type": "number",
+                "format": "float",
+                "description": "The index where the tag text ends in audio file"
+              },
+              "speaker": {
+                "type": "string",
+                "description": "speaker identifier",
+                "example": "alex"
+              },
+              "speakerGender": {
+                "type": "string",
+                "description": "speaker gender",
+                "example": "man"
+              },
+              "transliteration": {
+                "type": "Transliteration",
+                "$ref": "#/components/schemas/Transliteration",
+                "description": "Frame where the described tag begins"
+              }
+            }
+          }
+        ]
+      },
       "ShapeTypeEnum": {
         "type": "string",
         "enum": [
@@ -432,7 +470,8 @@
           "2D_rectangle_text_block",
           "2D_polygon_text_block",
           "2D_timebound_polygon",
-          "2D_plain_text"
+          "2D_plain_text",
+          "2D_audio"
         ]
       },
       "Style": {
