@@ -125,22 +125,26 @@
           "latitude": {
             "description": "The latitude at which the video source is installed.",
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "example": 5
           },
           "longitude": {
             "description": "The longitude at which the video source is installed.",
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "example": 5
           },
           "altitude": {
             "description": "The altitude at which the video source is installed.",
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "example": 5
           },
           "elevation": {
             "description": "The elevation from the ground at which the video source is installed, measured in meters.",
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "example": 5
           }
         }
       },
@@ -164,17 +168,20 @@
           "yaw": {
             "description": "The yaw of the detected object or event.",
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "example": 5
           },
           "pitch": {
             "description": "The pitch of the detected object or event.",
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "example": 5
           },
           "roll": {
             "description": "The roll of the detected object or event.",
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "example": 5
           }
         }
       },
@@ -188,12 +195,14 @@
           "x": {
             "description": "X-coordinate as integer number of pixels measured from the left to the right.",
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "example": 5
           },
           "y": {
             "description": "Y-coordinate as integer number of pixels measured from the top to the bottom.",
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "example": 5
           }
         }
       },
@@ -208,17 +217,20 @@
           "x": {
             "description": "X-coordinate as integer number of pixels measured from the left to the right.",
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "example": 5
           },
           "y": {
             "description": "Y-coordinate as integer number of pixels measured from the top to the bottom.",
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "example": 5
           },
           "z": {
             "description": "Z-coordinate as integer number of pixels measured from the top to the bottom.",
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "example": 5
           }
         }
       },
@@ -330,12 +342,14 @@
               "startFrameCounter": {
                 "type": "integer",
                 "format": "int32",
-                "description": "Frame where the described tag begins"
+                "description": "Frame where the described tag begins",
+                "example": 5
               },
               "endFrameCounter": {
                 "type": "integer",
                 "format": "int32",
-                "description": "Frame where the described tag begins"
+                "description": "Frame where the described tag begins",
+                "example": 5
               },
               "points": {
                 "type": "array",
@@ -403,12 +417,14 @@
               "startIndex": {
                 "type": "integer",
                 "format": "int32",
-                "description": "The index where the tag text starts in initial text"
+                "description": "The index where the tag text starts in initial text",
+                "example": 5
               },
               "length": {
                 "type": "integer",
                 "format": "int32",
-                "description": "The chars count of the tag"
+                "description": "The chars count of the tag",
+                "example": 5
               },
               "transliteration": {
                 "type": "Transliteration",
@@ -435,12 +451,14 @@
               "startTime": {
                 "type": "number",
                 "format": "float",
-                "description": "The index where the tag text starts in audio file"
+                "description": "The index where the tag text starts in audio file",
+                "example": 5
               },
               "endTime": {
                 "type": "number",
                 "format": "float",
-                "description": "The index where the tag text ends in audio file"
+                "description": "The index where the tag text ends in audio file",
+                "example": 5
               },
               "speaker": {
                 "type": "string",
@@ -732,12 +750,14 @@
           "index": {
             "description": "The index of the segment, so as to guarantee strict ordering of segment comparison",
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "example": 5
           },
           "weight": {
             "description": "The weight of the distance in the total distance",
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "example": 5
           },
           "assignmentFunction": {
             "description": "The hashcode obtained by running a SHA-512 on the binary values of the segments, in their order. ",
